@@ -8,17 +8,17 @@ using System.Diagnostics;
 public class SpeedRacer : MonoBehaviour
 {
     // Declare and initialise the car's information
-    public string carMaker;
-    public string carModel = "GTR R35";
-    public string engineType = "V6, Twin Turbo";
+    public string carMaker = "Lamborghini";
+    public string carModel = "Huracan Evo";
+    public string engineType = "Naturally Aspirated V10";
 
-    public int carWeight = 1609;
-    public int yearMade = 2009;
+    public int carWeight = 1665;
+    public int yearMade = 2019;
 
-    public float maxAcceleration = 0.98f;
+    public float maxAcceleration = 1.06f;
 
     public bool isCarTypeSedan = false;
-    public bool hasFrontEngine = true;
+    public bool hasFrontEngine = false;
 
     public TextMeshProUGUI modelText;
     public TextMeshProUGUI fuelText;
