@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class SpeedRacer : MonoBehaviour
+public class SpeedRacerUi : MonoBehaviour
 {
     public string carMaker;
     public string carModel = "GTR R35";
@@ -28,29 +28,36 @@ public class SpeedRacer : MonoBehaviour
 
     public Fuel carFuel = new Fuel(100);
 
+    public TMP_Text carDescriptionUI;
+    public TMP_Text carAgeUI;
+    public TMP_Text carWeightUI;
+    public TMP_Text carFuelLevelUI;
+    //public TMP_Text carTypeUI;
+
+
     public global::System.Int32 YearMade { get => YearMade1; set => YearMade1 = value; }
     public global::System.Int32 YearMade1 { get => yearMade; set => yearMade = value; }
     public global::System.Int32 YearMade2 { get => yearMade; set => yearMade = value; }
 
     void Start()
     {
-        print("The racer model is " + carModel + " by " + carMaker + ". It has a " + engineType + " engine.");
+        carDescriptionUI.text = "The racer model is " + carModel + " by " + carMaker + ". It has a " + engineType + " engine.";
 
         CheckWeight();
 
         if (YearMade <= 2009)
         {
-            print("It was first introduced in " + YearMade);
+            carAgeUI.text = "It was first introduced in " + YearMade;
 
             int carAge = CalculateAge(YearMade);
 
-            print("That makes it " + carAge + " years old.");
+            carAgeUI.text += ". That makes it " + carAge + " years old.";
 
         }
         else
         {
-            print("It was introduced in the 2010's");
-            print("And its maximum acceleration is " + maxAcceleration + " m/s2");
+             carAgeUI.text = "It was introduced in the 2010's";
+             carAgeUI.text += "And its maximum acceleration is " + maxAcceleration + " m/s2";
         }
 
         print(CheckCharacteristics());
@@ -65,25 +72,25 @@ public class SpeedRacer : MonoBehaviour
         }
     }
 
-    void ConsumeFuel()
+    public void ConsumeFuel()
     {
-        carFuel.fuelLevel = carFuel.fuelLevel - 10;
+        carFuel.fuelLevel -= 10;
     }
-    void CheckFuelLevel()
+    public void CheckFuelLevel()
     {
         switch (carFuel.fuelLevel)
         {
             case 70:
-                print("Fuel level is nearing two-thirds.");
+                carFuelLevelUI.text = "Fuel level is nearing two-thirds.";
                 break;
             case 50:
-                print("Fuel level is at half amount.");
+                carFuelLevelUI.text = "Fuel level is at half amount.";
                 break;
             case 10:
-                print("Warning! Fuel level is critically low.");
+                carFuelLevelUI.text = "Warning! Fuel level is critically low.";
                 break;
             default:
-                print("Nothing to report.");
+                carFuelLevelUI.text = "Nothing to report.";
                 break;
         }
     }
@@ -92,11 +99,11 @@ public class SpeedRacer : MonoBehaviour
 
         if (carWeight < 1500)
         {
-            print("The " + carModel + " weighs less than 1500 kg.");
+            carWeightUI.text = "The " + carModel + " weighs less than 1500 kg.";
         }
         else
         {
-            print("The " + carModel + " weighs over 1500 kg.");
+            carWeightUI.text = "The " + carModel + " weighs over 1500 kg.";
         }
     }
 
